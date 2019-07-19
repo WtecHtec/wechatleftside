@@ -1,0 +1,63 @@
+<!-- 
+<view   wx:for="{{data}}" wx:for-item="item" wx:for-index="index" wx:key="that" style="position: relative; width: 100%; height: 138rpx; margin-bottom: 10rpx;border-bottom: 1rpx solid #ccc;">
+  <view id="btn" style="width: 100%; height: 138rpx;position: absolute;display: flex;flex-direction:row-reverse;  " >
+   
+   <view style="width: 400rpx;display: flex;flex-direction:row-reverse; ">
+      <view style="background: blue;line-height: 138rpx;width:100rpx;" >
+     删除
+    </view>
+      <view style="background: red;line-height: 138rpx;text-align: center;width:100rpx;" >
+       <text style="font-size:0.5rem;"> 重新分配 </text>  
+    </view>
+    <view style="background: blue;line-height: 138rpx;width:100rpx;" >
+        <text> 删除</text>
+    </view>
+     <view style="background: red;line-height: 138rpx;width:100rpx;" >
+        <text> 删除</text>
+    </view>
+   </view>
+ 
+  
+  </view>
+  <view id="content" data-index="{{ index}}" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="background: blue; width: 100%; height: 138rpx; position: absolute;right:{{ item.right }}rpx;" ></view>
+</view> -->
+
+<!-- <view wx:for="{{data}}" wx:for-item="item" wx:for-index="index" wx:key="that">
+
+<scroll-view scroll-x="{{ item.bScroll }}" scroll-left='{{ item.right }}' data-index="{{ index }}"  data-item="{{ item }}" bindscroll="bindscroll" bindtouchend="touchend" bindtouchstart="touchstart"  scroll-with-animation="{{ item.bScroll }}" style=" white-space: nowrap; display: flex" >
+  <view style="background: red; width: 100%; height: 100px; display: inline-block" > 211 </view>
+  <view style="background: green; width: 200px; height: 100px; display: inline-block">2adasdsad</view>
+ 
+</scroll-view>
+
+
+</view> -->
+
+
+<view class="container">
+  <scroll-view style='height:{{height}}px;' scroll-y='{{scrollY}}' class='msg-list' bindscrolltolower="onScrolltolower" bindscrolltoupper='onScrolltoupper'>
+     <i-load-more tip="刷新" loading="true" wx:if="{{ bToupper }}"/> 
+
+    <view wx:for="{{msgList}}" wx:key="id" class='msg-item' animation='{{item.wrapAnimation}}'>
+      <view id='{{item.id}}' class='msg' animation='{{item.animation}}' bindtouchstart='ontouchstart' bindtouchmove='ontouchmove' bindtouchend='ontouchend'>
+        <image class='header-img' src="{{item.headerImg}}"></image>
+        <text class='user-name'>{{item.carid}}</text>
+        <text class='msg-text'>{{item.msgText}}</text>
+        <image class='site-img' src="{{item.siteImg}}"></image>
+      </view>
+      <view class='msg-menu'>
+        <view id='{{item.id}}' class='menu-delete' bindtap='onDeleteMsgTap' bindlongtap='onDeleteMsgLongtap'>
+          删除
+        </view>
+        <view id='{{item.id}}' class='menu-mark' bindtap='onMarkMsgTap' bindlongtap='onMarkMsgLongtap'>
+          试驾
+        </view>
+      </view>
+    </view>
+    
+    <i-load-more tip="加载更多" loading="true" wx:if="{{ bTolower }}"/> 
+  </scroll-view>
+</view>
+
+
+
